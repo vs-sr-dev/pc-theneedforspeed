@@ -6,7 +6,7 @@ Immercenary's port and grew on Crash 'n Burn's, Doctor Hauzer's and Escape
 from Monster Manor's; The Need for Speed is its fifth game, the second on
 Portfolio 21.10 (the same OS images as Monster Manor's), and the first
 that loads code of its own into memory and enters it. The submodule was
-taken at **42a44c2**; it is at **bebc7dc**.
+taken at **42a44c2**; it is at **2ae02a2**.
 
 ## Session 1
 
@@ -65,3 +65,15 @@ both:
 * **The readers**: `stream --scan` the same on the four other trees;
   `tdkcheck` from 42a44c2 and now, and `check.py`, the same on Immercenary's
   and Escape from Monster Manor's images.
+
+Then, after the user's first race in the window and with their word,
+**2ae02a2**: a blank NVRAM that `pfboot --nvram DIR` keeps is formatted by
+the disc's own FORMAT before the boot ("format ram 3 0 nvram", the line
+LMADM gives it), as a console comes from the factory -- 21.10's LMADM does
+not format a blank one --, and `--nvram-blank` keeps it blank (`pf_nvram`,
+`pf_file`'s `pf_shell_boot`, `pf_main`); the README's ports table mended.
+Every port's reference traces the same byte for byte as bebc7dc's (none
+keeps an NVRAM); Doctor Hauzer with a blank kept NVRAM: FORMAT, then its
+LMADM 20.x finds it valid. Every port's submodule moved (pc-crashnburn
+637d3bf, PC-Immercenary 9e0d3fa, pc-doctorhauzer caeec3e,
+pc-escapefrommonstermanor e813778, all pushed).

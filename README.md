@@ -89,11 +89,8 @@ cmake -S build/recomp -B build/recomp-build -G Ninja -DCMAKE_CXX_COMPILER=clang+
 ninja -C build/recomp-build
 build/recomp-build/selftest build/recomp/selftest/*.txt
 
-# the console's NVRAM, formatted once by the disc's own FORMAT (a console's comes so)
-build/recomp-build/pfboot build/disc/System/Programs/FORMAT --disc build/disc \
-  --nvram build/nvram --cmdline "format ram 3 0 nvram"
-
-# the disc as the console starts it; to the race, headless, its frames
+# the disc as the console starts it, the NVRAM kept in build/nvram (a blank one is formatted
+# first by the disc's own FORMAT, as a console comes); to the race, headless, its frames
 build/recomp-build/pfboot build/disc --boot --trace 0 --nvram build/nvram --max-calls 2500000 \
   $(cat replays/to-the-race.txt) --frames build/frames --frames-at 2200-30000/30
 
@@ -114,7 +111,10 @@ fly-by, the cockpit, the car pulling away under A and R. On the way the
 kit learnt the game's own display lists (`SubmitVDL`), its overlay entered
 at its AIF header, the bitmaps it makes, the audio folio's pause, samples
 from AIFF images in memory, the cross product, and the disc's name in
-`GetDirectory`. See `TODO.md`.
+`GetDirectory`. Then **the user played it in the window**: "perfect, at
+the right speed and very smooth" -- the race waits for the first gear (R),
+as the game does (`replays/first-race.txt`). A blank NVRAM is now
+formatted by the disc's own FORMAT before the boot. See `TODO.md`.
 
 ## Documentation
 

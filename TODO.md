@@ -12,8 +12,9 @@ is at the bottom. Read the top, not the history.
 | recompiled | `launchme` 1,056 functions, `frontovl` 575, `lmadm` 94, `format` 35; no seeds; self-test 0 failures (1,365 functions, 17,862 vectors) |
 | `pfboot build/disc --boot --nvram build/nvram` | logos, intro, title, the attract loop with the hosts' clips, on for ever with no stop |
 | `... $(cat replays/to-the-race.txt)` | Start to the title and the menu, Start into the default race (Diablo against 512TR, City), A the throttle and R first gear: the car drives off, the clock runs (`docs/02`) |
-| speed, headless | the race about 2.5 times the console's (26,000 fields in 173 s with frames every 30 fields) |
-| the kit | **bebc7dc** in every port (`docs/10`): regressed on every port, committed and pushed with the user's word |
+| speed | headless the race about 2.5 times the console's; **in the window the user's first race at the console's pace, smooth** (`replays/first-race.txt`) |
+| the NVRAM | a blank one formatted by the disc's own FORMAT before the boot (`--nvram-blank` keeps it blank) |
+| the kit | **2ae02a2** in every port (`docs/10`: bebc7dc, then the NVRAM's format): regressed on every port, committed and pushed with the user's word |
 | this repository | published at the end of session 1 (vs-sr-dev/pc-theneedforspeed), the user's word: "when we see something" |
 
 ```sh
@@ -23,7 +24,6 @@ cd D:/Homebrew6 && PYTHONIOENCODING=utf-8 python -m 3dokit.recomp --out pc-thene
   "lmadm=pc-theneedforspeed/build/disc/System/Programs/LMADM" "format=pc-theneedforspeed/build/disc/System/Programs/FORMAT"
 export PATH=/c/msys64/mingw64/bin:$PATH                 # for cmake/ninja/clang only
 cmake -S build/recomp -B build/recomp-build -G Ninja -DCMAKE_CXX_COMPILER=clang++ && ninja -C build/recomp-build
-cp build/nvram-formatted.bin build/nvram/nvram.bin     # FORMAT's fresh NVRAM, kept aside
 build/recomp-build/pfboot build/disc --boot --trace 0 --nvram build/nvram --max-calls 2500000 \
   $(cat replays/to-the-race.txt) --frames build/frames --frames-at 2200-30000/30
 ```
@@ -89,15 +89,17 @@ first.
 
 ## Answered
 
+* (Session 1) The NVRAM: `pfboot` formats a blank kept one with the disc's
+  own FORMAT before the boot -- the user's choice of the proposal --, with
+  `--nvram-blank` to keep it blank (kit 2ae02a2).
+
 * (Session 1) The kit's commit and this repository: the user's word in
   the session's brief ("repo BYOA pc-theneedforspeed con topic quando
   vediamo qualcosa ... e aggiornamento di 3dokit").
 
 ## Questions for the user
 
-* The NVRAM: a console's comes formatted; the port formats a blank one
-  with the disc's own FORMAT (`docs/02`). Fine as the way, or should
-  `pfboot` do it when the NVRAM is blank?
+* None open.
 
 ## Keep in mind
 
@@ -140,3 +142,7 @@ first.
   Hauzer and Escape from Monster Manor (`docs/10`); committed and pushed,
   every port's submodule moved.
 * **The repository** published on GitHub.
+* **The window**: the user played a first race -- smooth, at the console's
+  speed; the race waits for the first gear (R). Then the NVRAM's format
+  moved into `pfboot` (kit 2ae02a2), every port moved, and this
+  repository's last commit of the session.

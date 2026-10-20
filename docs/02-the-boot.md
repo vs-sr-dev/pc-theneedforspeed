@@ -74,8 +74,11 @@ lists as it does through the folio's own.
 The 21.10 `LMADM -a` validates the NVRAM through the mounted `/nvram`; a
 blank one is "Not a flat linked-memory filesystem" and LMADM ends there
 (Doctor Hauzer's 20.x LMADM runs FORMAT itself; this one does not). The
-console's own NVRAM is formatted when it leaves the factory, so the port
-formats it once with the disc's own FORMAT (`pfboot --cmdline`, new):
+console's own NVRAM is formatted when it leaves the factory, so the runtime
+now does what the factory did: with `--boot --nvram DIR` and a blank NVRAM
+(every byte 0), the shell first runs the disc's own FORMAT with LMADM's
+command line ("format ram 3 0 nvram"), when the build has its module;
+`--nvram-blank` keeps it blank. By hand the same is (`pfboot --cmdline`):
 
     build/recomp-build/pfboot build/disc/System/Programs/FORMAT --disc build/disc \
       --nvram build/nvram --cmdline "format ram 3 0 nvram"
@@ -110,4 +113,5 @@ first bend, the clock going on.
 
 Headless, the race runs at about 2.5 times the console's speed (26,000
 fields in 173 seconds with `--frames` every 30 fields); the attract films
-and menus far faster.
+and menus far faster. In the window the user played a first race at the
+console's pace, smooth (`replays/first-race.txt`).

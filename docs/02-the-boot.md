@@ -102,7 +102,9 @@ With Start the attract loop gives way to the title and the main menu;
 Start again chooses the default race (the Lamborghini Diablo against the
 Ferrari 512TR, the City track): the loading page, the car's slides, the
 chase camera's fly-by, the cockpit. The transmission is manual: A is the
-throttle, R shifts up. With `replays/to-the-race.txt` the car pulls away,
+throttle, R shifts up -- and the race has no start signal: it waits for
+the player's first gear, and everything (the car, the rival, the clock)
+sets off with it. With `replays/to-the-race.txt` the car pulls away,
 the clock runs, and with no steering it ends against the rock wall of the
 first bend, the clock going on.
 

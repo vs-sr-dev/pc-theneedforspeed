@@ -44,6 +44,10 @@ kernel and the event broker 21.10 whole), `relocleaves.py`,
 
 ### 1. Play it in the window
 
+Played by the user at the end of session 1: "perfect, at the right speed
+and very smooth"; the race starts when R puts the first gear in (the game
+gives no start signal). The presses: `replays/first-race.txt`.
+
 The race runs headless; next is the user at the pad (`--window`, the keys
 in the README): the front end's menus and options (the car, the track, the
 transmission), a whole race with steering, the police, the traffic, the
